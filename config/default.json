@@ -1,3 +1,4 @@
 {
-  "mongoURI": "mongodb://admin:admin123@ds245018.mlab.com:45018/kuvarkonektor"
+  "mongoURI": "mongodb://admin:admin123@ds245018.mlab.com:45018/kuvarkonektor",
+  "jwtSecret": "#^!*&&!#^E!Tdjajdhsjas!&#^#^&!!^#*"
 }
