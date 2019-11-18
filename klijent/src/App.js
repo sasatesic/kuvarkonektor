@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Fragment } from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Navbar from "./komponente/layout/Navbar";
+import Naslovna from "./komponente/layout/Naslovna";
+import Registracija from "./komponente/autorizacija/Registracija";
+import Login from "./komponente/autorizacija/Login";
+import Alert from "./komponente/layout/Alert";
+//Redux
+import { Provider } from "react-redux";
+import store from "./store";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import "./App.css";
+
+const App = () => (
+  <Provider store={store}>
+    <BrowserRouter>
+      <Fragment>
+        <Navbar />
+        <Route exact path="/" component={Naslovna} />
+        <section className="container">
+          <Alert />
+          <Switch>
+            <Route exact path="/registracija" component={Registracija} />
+            <Route exact path="/login" component={Login} />
+          </Switch>
+        </section>
+      </Fragment>
+      ;
+    </BrowserRouter>
+  </Provider>
+);
 
 export default App;
