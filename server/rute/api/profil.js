@@ -5,6 +5,7 @@ const { check, validationResult } = require("express-validator");
 
 const Profil = require("../../modeli/Profil");
 const Korisnik = require("../../modeli/Korisnik");
+const Post = require("../../modeli/Post");
 
 /***
  *  Ruta za dostavljanje profila ulogovanog korisnika
@@ -105,6 +106,8 @@ ruter.get("/korisnik/:korisnik_id", async (req, res) => {
 
 ruter.delete("/", autorizacija, async (req, res) => {
   try {
+    await Post.deleteMany({ korisnik: req.korisnik.id });
+
     await Profil.findOneAndRemove({ korisnik: req.korisnik.id });
 
     await Korisnik.findOneAndRemove({ _id: req.korisnik.id });
@@ -207,15 +210,7 @@ ruter.put(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const {
-      skola,
-      diploma,
-      zvanje,
-      od,
-      doDatum,
-      trenutno,
-      opis
-    } = req.body;
+    const { skola, diploma, zvanje, od, doDatum, trenutno, opis } = req.body;
 
     const novoObrazovanje = {
       skola,
@@ -270,8 +265,8 @@ function obrisiIskustvo(profil, req) {
 function obrisiObrazovanje(profil, req) {
   return new Promise(async (resolve, reject) => {
     const indexZaBrisanje = profil.obrazovanje
-        .map(obrazovanje => obrazovanje.id)
-        .indexOf(req.params.obrazovanje_id);
+      .map(obrazovanje => obrazovanje.id)
+      .indexOf(req.params.obrazovanje_id);
 
     profil.obrazovanje.splice(indexZaBrisanje, 1);
     profil.save();

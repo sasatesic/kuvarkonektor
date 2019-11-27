@@ -176,7 +176,7 @@ ruter.post(
       const { ime, avatar, id } = korisnik;
       const noviKomentar = {
         tekst,
-        ime: korisnik.tekst,
+        ime,
         avatar,
         korisnik: id
       };
