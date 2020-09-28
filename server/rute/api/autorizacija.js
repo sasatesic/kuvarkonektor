@@ -23,7 +23,7 @@ ruter.get("/", autorizacija, async (req, res) => {
 ruter.post(
   "/",
   [
-    check("email", "Dosta  vite validan email").isEmail(),
+    check("email", "Dostavite validan email").isEmail(),
     check("password", "Password je obavezan").exists()
   ],
   async (req, res) => {

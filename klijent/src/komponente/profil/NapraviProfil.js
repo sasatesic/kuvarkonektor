@@ -56,7 +56,7 @@ const NapraviProfil = ({ napraviProfil, history }) => {
 
   return (
     <Fragment>
-      <h1 className="large text-primary">Create Your Profile</h1>
+      <h1 className="large text-primary">Napravite Svoj Profil</h1>
       <p className="lead">
         <FontAwesomeIcon icon={faUser} /> Hajde da popunimo vase informacije
         kako bi istakli vas profil

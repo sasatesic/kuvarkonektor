@@ -61,7 +61,7 @@ const Login = ({ login, odradjenaAutentikacija }) => {
         />
       </form>
       <p className="my-1">
-        Nemate nalog? <Link to="/registracija">Uloguj se</Link>
+        Nemate nalog? <Link to="/registracija">Registruj se</Link>
       </p>
     </Fragment>
   );

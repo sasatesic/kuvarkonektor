@@ -143,7 +143,7 @@ export const dodajIskustvo = (formData, history) => async dispatch => {
 
 export const dodajObrazovanje = (formData, history) => async dispatch => {
   try {
-    const config = {
+  const config = {
       headers: {
         "Content-Type": "application/json"
       }
